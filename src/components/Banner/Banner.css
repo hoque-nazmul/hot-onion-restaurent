@@ -1,0 +1,31 @@
+.GrandBanner {
+    background-color: #FCF4E0;
+}
+.BannerSection {
+    height: 500px;
+    background-image: url(/static/media/bannerbackground.e0679251.png);
+    background-repeat: round;
+    background-attachment: fixed;
+    background-size: cover;
+}
+
+.SearchInput {
+    color: white;
+    width: 350px;
+    border-radius: 20px;
+    border: none;
+    padding: 6px 20px;
+}
+
+.SearchBtn {
+    border: 1px solid #F91944;
+    background: #F91944;
+    color: white;
+    padding: 6px 20px;
+    border-radius: 20px;
+    margin-left: -30px;
+}
+
+input:focus {
+    outline-offset: 0;
+}
