@@ -1,0 +1,18 @@
+.ShopSection {
+    margin: 60px 0px;
+}
+
+.ShopBtn {
+    border: none;
+    background-color: #fff;
+    margin: 0 auto;
+    font-size: 16px;
+    font-weight: 500;
+    color: #000;
+    margin: 5px 10px;
+}
+
+.ShopBtn:hover {
+    color: #F91944;
+    border-bottom: 2px solid #F91944;
+}
