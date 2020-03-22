@@ -2,17 +2,34 @@
     margin: 60px 0px;
 }
 
-.ShopBtn {
+.ShopBtnActive {
+    color: #F91944;
     border: none;
-    background-color: #fff;
-    margin: 0 auto;
+    font-size: 16px;
+    font-weight: 500;
+    margin: 5px 10px;
+    border-bottom: 2px solid #F91944;
+    background-color: transparent;
+    transition: 0.5s all ease;
+}
+
+.ShopBtnInactive {
+    border: none;
+    background-color: transparent;
     font-size: 16px;
     font-weight: 500;
     color: #000;
     margin: 5px 10px;
 }
 
-.ShopBtn:hover {
-    color: #F91944;
-    border-bottom: 2px solid #F91944;
+.ShopBtnActive:focus {
+    outline: 0;
+}
+
+.ShopBtnActive:active {
+    outline: 0;
+}
+
+.ShopBtnActive:hover {
+    outline: 0;
 }
