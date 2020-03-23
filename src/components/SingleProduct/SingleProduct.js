@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useParams } from 'react-router-dom';
 import fakeData from '../../fakeData';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -8,6 +8,27 @@ import './SingleProduct.css'
 const SingleProduct = () => {
     const { productKey } = useParams();
     const product = fakeData.find(pd => pd.key === productKey)
+
+    const [quantity, setQuantity] = useState(1);
+    // const [price, setPrice] = useState(product.price);
+
+   
+
+    const handlePlusIcon = () => {
+        const ProductQuantity = quantity + 1;
+        // const ProductPrice = ProductQuantity * price;
+        setQuantity(ProductQuantity);
+        // setPrice(ProductPrice);
+    }
+    const handleMinusIcon = () => {
+        if(quantity >= 2) {
+            const ProductQuantity = quantity - 1;
+            // const ProductPrice = ProductQuantity * price;
+            setQuantity(ProductQuantity);
+            // setPrice(ProductPrice);
+        }
+    }
+
     return (
         <div className="container">
             <div className="ProductSection">
@@ -16,11 +37,11 @@ const SingleProduct = () => {
                         <h2>{product.name}</h2>
                         <p>{product.description}</p>
                         <div className="ProductPrice d-flex align-items-center">
-                            <h4>&#36; <span id="price">{product.price}</span></h4>
+                            <h4>&#36; <span id="price">{quantity > 0 ? product.price * quantity : product.price}</span></h4>
                             <div className="ProductQuantity d-flex">
-                                <button>+</button>
-                                <span id="quantity">1</span>
-                                <button>-</button>
+                                <button onClick={handleMinusIcon}>-</button>
+                                <span id="quantity">{ quantity }</span>
+                                <button onClick={handlePlusIcon}>+</button>
                             </div>
                         </div>
                         <button className="CartBtn"><FontAwesomeIcon icon={faShoppingCart} /><span>Add</span></button>
