@@ -4,18 +4,6 @@ import './CartProducts.css'
 const CartProducts = (props) => {
     const {name, quantity, img, price} = props.cartProduct;
 
-    const [qty, setQty] = useState(quantity);
-
-    const handlePlusIcon = () => {
-        const ProductQuantity = qty + 1;
-        setQty(ProductQuantity);
-    }
-    const handleMinusIcon = () => {
-        if(qty >= 2) {
-            const ProductQuantity = qty - 1;
-            setQty(ProductQuantity);
-        }
-    }
     return (
         <div className="CartSection">
             <div className="CartFoods d-flex justify-content-between align-items-center">
@@ -30,9 +18,9 @@ const CartProducts = (props) => {
                     </div>
                 </div>
                 <div className="ProductQuantity d-flex align-items-center">
-                    <button onClick={handleMinusIcon}>-</button>
-                    <span id="quantity">{ qty }</span>
-                    <button onClick={handlePlusIcon}>+</button>
+                    <button>-</button>
+                    <span id="quantity">{ quantity }</span>
+                    <button>+</button>
                 </div>
             </div>
         </div>
