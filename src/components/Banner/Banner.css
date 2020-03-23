@@ -10,11 +10,15 @@
 }
 
 .SearchInput {
-    color: white;
+    color: gray;
     width: 350px;
     border-radius: 20px;
     border: none;
     padding: 6px 20px;
+}
+
+.SearchInput:focus {
+    outline: none;
 }
 
 .SearchBtn {

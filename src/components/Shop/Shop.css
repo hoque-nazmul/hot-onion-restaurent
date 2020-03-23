@@ -26,3 +26,36 @@
     outline: none;
 }
 
+.checkoutBtn {
+    display: block;
+    margin: 30px auto;
+    border: 1px solid #CECECE;
+    background: #CECECE;
+    padding: 10px 30px;
+    border-radius: 8px;
+    color: white;
+    font-weight: 500;
+}
+
+.checkoutBtnActivate {
+    display: block;
+    margin: 30px auto;
+    border: 1px solid #F91944;
+    background: #F91944;
+    padding: 10px 30px;
+    border-radius: 8px;
+    color: white;
+    font-weight: 500;
+}
+
+.checkoutBtnActivate:hover {
+    text-decoration: none;
+}
+
+.checkoutBtn:focus {
+    outline: none;
+}
+
+.checkoutBtnActivate:focus {
+    outline: none;
+}

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
 import fakeData from '../../fakeData';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faShoppingCart } from '@fortawesome/free-solid-svg-icons'
@@ -11,9 +11,11 @@ const SingleProduct = () => {
     const product = fakeData.find(pd => pd.key === productKey)
 
     const [quantity, setQuantity] = useState(1);
+    const [btn, setBtn] = useState(true);
 
    const hanldeCart = (cartProduct) => {
-        addToDatabaseCart(cartProduct.key, quantity)
+        addToDatabaseCart(cartProduct.key, quantity);
+        setBtn(false)
    }
 
     const handlePlusIcon = () => {
@@ -42,7 +44,10 @@ const SingleProduct = () => {
                                 <button onClick={handlePlusIcon}>+</button>
                             </div>
                         </div>
-                        <button onClick={() => hanldeCart(product)} className="CartBtn"><FontAwesomeIcon icon={faShoppingCart} /><span>Add</span></button>
+                        {
+                            btn ? <button onClick={() => hanldeCart(product)} className="CartBtn"><FontAwesomeIcon icon={faShoppingCart} /><span>Add</span></button> : <Link to="/"><button className="CartBtn"><FontAwesomeIcon icon={faShoppingCart} /><span>Shop More</span></button></Link>
+                        }
+                        
                     </div>
                     <div className="ProductImage">
                         <img src={product.img} alt=""/>

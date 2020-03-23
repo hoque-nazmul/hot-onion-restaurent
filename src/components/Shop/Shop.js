@@ -4,11 +4,15 @@ import fakeData from '../../fakeData';
 import LunchProducts from '../LunchProducts/LunchProducts';
 import BreakfastProducts from '../BreakfastProducts/BreakfastProducts';
 import DinnerProducts from '../DinnerProducts/DinnerProducts';
+import { getDatabaseCart } from '../../utilities/databaseManager';
+import { Link } from 'react-router-dom';
 
 const Shop = () => {
     const [lunchProduct, setLunchProduct] = useState(fakeData);
     const [breakfastProduct, setbreakfastProduct] = useState(fakeData);
     const [dinnerProduct, setDinnerProduct] = useState(fakeData);
+
+    
 
     const [showBreakfast, setShowBreakfast] = useState(false);
     const [showLunch, setShowLunch] = useState(true);
@@ -37,7 +41,14 @@ const Shop = () => {
       setShowLunch(false);
       setShowBreakfast(false);
     }
-   
+
+    // Cart Amount
+    const cartInfo = getDatabaseCart();
+    const cartProductKeys = Object.keys(cartInfo);
+    const productKeysCount = cartProductKeys.length;
+
+    const [cart, setCart] = useState(productKeysCount);
+    
 
     return (
         <div className="ShopSection">
@@ -72,6 +83,10 @@ const Shop = () => {
                                               </DinnerProducts>)
             }
           </div>
+          {
+            cart > 0 ? <Link to="/shipment"><button className="checkoutBtnActivate">Checkout Your Foods</button></Link> : <button onClick={() => alert("Your cart is empty yet. Keep Shopping")} className="checkoutBtn">Checkout Your Foods</button>
+          }
+          
         </div>
     );
 };

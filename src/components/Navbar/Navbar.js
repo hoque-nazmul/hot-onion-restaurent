@@ -6,6 +6,7 @@ import { faShoppingCart } from '@fortawesome/free-solid-svg-icons'
 import { Link } from 'react-router-dom';
 
 const Navbar = () => {
+    
     return (
         <div className="NavbarWrapper">
             <div className="NavbarContent">
