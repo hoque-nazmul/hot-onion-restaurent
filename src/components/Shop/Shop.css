@@ -23,13 +23,6 @@
 }
 
 .ShopBtnActive:focus {
-    outline: 0;
+    outline: none;
 }
 
-.ShopBtnActive:active {
-    outline: 0;
-}
-
-.ShopBtnActive:hover {
-    outline: 0;
-}

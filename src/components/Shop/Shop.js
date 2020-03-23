@@ -43,7 +43,7 @@ const Shop = () => {
         <div className="ShopSection">
           <div className="ShopContent">
             <div className="ShopBtnWrapper d-flex justify-content-center">
-               <div>
+               <div className="pb-2">
                     <button onClick={handleBreakfastProduct} className={ showBreakfast ? 'ShopBtnActive' : 'ShopBtnInactive'}>Breakfast</button>
                     <button onClick={handleLunchProduct} className={ showLunch ? 'ShopBtnActive' : 'ShopBtnInactive'}>Lunch</button>
                     <button onClick={handleDinnerProduct} className={ showDinner ? 'ShopBtnActive' : 'ShopBtnInactive'}>Dinner</button>
@@ -53,21 +53,21 @@ const Shop = () => {
             {   
               showLunch &&
                 lunchProduct.map(product => <LunchProducts 
-                                                key={product.id}
+                                                key={product.key}
                                                 lunchProducts = {product}>
                                             </LunchProducts>)
             }
             {
               showBreakfast &&
                 breakfastProduct.map(product => <BreakfastProducts 
-                                                  key={product.id}
+                                                  key={product.key}
                                                   breakfastProducts = {product}>
                                               </BreakfastProducts>)
             }
             {
               showDinner &&
                 dinnerProduct.map(product => <DinnerProducts
-                                                  key={product.id}
+                                                  key={product.key}
                                                   dinnerProducts = {product}>
                                               </DinnerProducts>)
             }

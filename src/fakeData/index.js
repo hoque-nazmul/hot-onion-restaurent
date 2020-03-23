@@ -1,6 +1,6 @@
 var fakeData = [
     {
-        "id": 1,
+        "key": "dfsd23dp",
         "name": "Healthy Meal Plan",
         "category" : "lunch",
         "img" : "https://live.staticflickr.com/65535/49683630028_e053b8faab_z.jpg",
@@ -9,7 +9,7 @@ var fakeData = [
         "price": 23.99
     },
     {
-        "id": 2,
+        "key": "dsafasd2k",
         "name": "Fried Chicken Bento",
         "category" : "lunch",
         "img" : "https://live.staticflickr.com/65535/49684462632_cb2a9be05f_z.jpg",
@@ -18,7 +18,7 @@ var fakeData = [
         "price": 15.99
     },
     {
-        "id": 3,
+        "key": "dasfsaf2k",
         "name": "Tarragon Rubbed Salmon",
         "category" : "lunch",
         "img" : "https://live.staticflickr.com/65535/49684462547_6c84559b60_z.jpg",
@@ -27,7 +27,7 @@ var fakeData = [
         "price": 9.99
     },
     {
-        "id": 4,
+        "key": "wrewsdf",
         "name": "Indian Lunch",
         "category" : "lunch",
         "img" : "https://live.staticflickr.com/65535/49683629818_520ea2f9c1_z.jpg",
@@ -36,7 +36,7 @@ var fakeData = [
         "price": 30.99
     },
     {
-        "id": 5,
+        "key": "rwerdsaj2",
         "name": "Beaf Steak",
         "category" : "lunch",
         "img" : "https://live.staticflickr.com/65535/49684462417_cd3357a0a5_z.jpg",
@@ -45,8 +45,8 @@ var fakeData = [
         "price": 18.99
     },
     {
-        "id": 6,
-        "name": "Honey Soy Glazed Salmon with Pappers",
+        "key": "eredfs342",
+        "name": "Honey Soy Glazed Salmon",
         "category" : "lunch",
         "img" : "https://live.staticflickr.com/65535/49683629678_97bf277abb_z.jpg",
         "short_dsc" : "How we dream about our future",
@@ -54,7 +54,7 @@ var fakeData = [
         "price": 33.99
     },
     {
-        "id": 7,
+        "key": "wertsy544",
         "name": "Salmon with GrapeFruit",
         "category" : "dinner",
         "img" : "https://live.staticflickr.com/65535/49683628538_471b7b986c_z.jpg",
@@ -63,7 +63,7 @@ var fakeData = [
         "price": 20.99
     },
     {
-        "id": 8,
+        "key": "ughde21e",
         "name": "Lamony Salmon Piccata",
         "category" : "dinner",
         "img" : "https://live.staticflickr.com/65535/49683628623_8ff878a4df_z.jpg",
@@ -72,7 +72,7 @@ var fakeData = [
         "price": 13.99
     },
     {
-        "id": 9,
+        "key": "rfetw32tr",
         "name": "Pork Tenderloin with Pilaf",
         "category" : "dinner",
         "img" : "https://live.staticflickr.com/65535/49684461392_9715e38e00_z.jpg",
@@ -81,7 +81,7 @@ var fakeData = [
         "price": 11.99
     },
     {
-        "id": 10,
+        "key": "sdfwe3fg",
         "name": "French Fries wth Cheese",
         "category" : "dinner",
         "img" : "https://live.staticflickr.com/65535/49684168261_7f672615a8_z.jpg",
@@ -90,7 +90,7 @@ var fakeData = [
         "price": 35.99
     },
     {
-        "id": 11,
+        "key": "234rlsf",
         "name": "Garlic Butter Baked Salmon",
         "category" : "dinner",
         "img" : "https://live.staticflickr.com/65535/49684168321_346c1f1bd7_z.jpg",
@@ -99,7 +99,7 @@ var fakeData = [
         "price": 42.99
     },
     {
-        "id": 12,
+        "key": "erw345sd",
         "name": "Baked Chicken",
         "category" : "dinner",
         "img" : "https://live.staticflickr.com/65535/49684461747_f03f1b5151_z.jpg",
@@ -108,7 +108,7 @@ var fakeData = [
         "price": 30.99
     },
     {
-        "id": 13,
+        "key": "wesdf232d",
         "name": "Bagel and Cream Cheese",
         "category" : "breakfast",
         "img" : "https://live.staticflickr.com/65535/49683587163_da94c136e0_z.jpg",
@@ -117,7 +117,7 @@ var fakeData = [
         "price": 35.99
     },
     {
-        "id": 14,
+        "key": "sfsdw23df",
         "name": "Breakfast Sandwitch",
         "category" : "breakfast",
         "img" : "https://live.staticflickr.com/65535/49684127236_6ed889e248_z.jpg",
@@ -126,7 +126,7 @@ var fakeData = [
         "price": 45.99
     },
     {
-        "id": 15,
+        "key": "dsfasds54",
         "name": "Baked Chicken",
         "category" : "breakfast",
         "img" : "https://live.staticflickr.com/65535/49683586993_7d3952b521_z.jpg",
@@ -135,7 +135,7 @@ var fakeData = [
         "price": 28.99
     },
     {
-        "id": 16,
+        "key": 16,
         "name": "Egg Benedict",
         "category" : "breakfast",
         "img" : "https://live.staticflickr.com/65535/49684419112_3dd62dee68_z.jpg",
@@ -144,7 +144,7 @@ var fakeData = [
         "price": 16.99
     },
     {
-        "id": 17,
+        "key": 17,
         "name": "Tost Cruissant Fried Egg",
         "category" : "breakfast",
         "img" : "https://live.staticflickr.com/65535/49684126896_0f49cde291_z.jpg",
@@ -153,7 +153,7 @@ var fakeData = [
         "price": 55.99
     },
     {
-        "id": 18,
+        "key": 18,
         "name": "Full Breakfast Fried Egg Toast Brunch",
         "category" : "breakfast",
         "img" : "https://live.staticflickr.com/65535/49683586873_c83ab14eef_z.jpg",
