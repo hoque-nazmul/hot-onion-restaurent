@@ -5,6 +5,7 @@ import Navbar from './components/Navbar/Navbar';
 import Banner from './components/Banner/Banner';
 import Shop from './components/Shop/Shop';
 import SingleProduct from './components/SingleProduct/SingleProduct';
+import Shipment from './components/Shipment/Shipment';
 
 function App() {
   return (
@@ -14,6 +15,9 @@ function App() {
           <Switch>
             <Route path="/product/:productKey">
               <SingleProduct></SingleProduct>
+            </Route>
+            <Route path="/shipment">
+                <Shipment></Shipment>
             </Route>
             <Route path="/">
               <Banner></Banner>
