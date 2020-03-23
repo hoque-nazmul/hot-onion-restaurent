@@ -1,7 +1,23 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import "./Shipment.css"
+import { getDatabaseCart } from '../../utilities/databaseManager';
+import fakeData from '../../fakeData';
+import CartProducts from '../CartProducts/CartProducts';
 
 const Shipment = () => {
+    const [cart, setCart] = useState([]);
+
+    useEffect(() => {
+        const savedCart = getDatabaseCart();
+        const productkeys = Object.keys(savedCart)
+        const cartProduct = productkeys.map(key => {
+            const getProduct = fakeData.find(product => product.key === key)
+            getProduct.quantity = savedCart[key];
+            return getProduct;
+        })
+        setCart(cartProduct);
+    }, [])
+
     return (
         <div className="container">
             <div className="ShipmentSection">
@@ -19,7 +35,10 @@ const Shipment = () => {
                         </form>
                     </div>
                     <div className="col-md-4">
-                        
+                        <h6>Cart Foods</h6>
+                        {
+                            cart.map(product => <CartProducts key={product.key} cartProduct={product}></CartProducts>)
+                        }
                     </div>
                 </div>
             </div>
