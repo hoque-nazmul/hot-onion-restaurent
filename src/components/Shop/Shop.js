@@ -46,8 +46,6 @@ const Shop = () => {
     const cartInfo = getDatabaseCart();
     const cartProductKeys = Object.keys(cartInfo);
     const productKeysCount = cartProductKeys.length;
-
-    const [cart, setCart] = useState(productKeysCount);
     
 
     return (
@@ -92,7 +90,7 @@ const Shop = () => {
            </div>
           </div>
           {
-            cart > 0 ? <Link to="/shipment"><button className="checkoutBtnActivate">Checkout Your Foods</button></Link> : <button onClick={() => alert("Your cart is empty yet. Keep Shopping")} className="checkoutBtn">Checkout Your Foods</button>
+            productKeysCount > 0 ? <Link to="/shipment"><button className="checkoutBtnActivate">Checkout Your Foods</button></Link> : <button onClick={() => alert("Your cart is empty yet. Keep Shopping")} className="checkoutBtn">Checkout Your Foods</button>
           }
           
         </div>
