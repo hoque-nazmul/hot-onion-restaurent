@@ -172,7 +172,7 @@ var fakeData = [
     {
         "key": "03shskdf2",
         "quantity" : 1,
-        "name": "Full Breakfast Fried Egg Toast Brunch",
+        "name": "Fried Egg Toast Brunch",
         "category" : "breakfast",
         "img" : "https://live.staticflickr.com/65535/49683586873_c83ab14eef_z.jpg",
         "short_dsc" : "How we dream about our future",

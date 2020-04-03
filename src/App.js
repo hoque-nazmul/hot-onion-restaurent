@@ -6,6 +6,7 @@ import Banner from './components/Banner/Banner';
 import Shop from './components/Shop/Shop';
 import SingleProduct from './components/SingleProduct/SingleProduct';
 import Shipment from './components/Shipment/Shipment';
+import Post from './components/Post/Post';
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
             <Route path="/">
               <Banner></Banner>
               <Shop></Shop>
+              <Post></Post>
             </Route>
           </Switch>
         </div>
