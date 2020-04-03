@@ -7,6 +7,7 @@ import Shop from './components/Shop/Shop';
 import SingleProduct from './components/SingleProduct/SingleProduct';
 import Shipment from './components/Shipment/Shipment';
 import Post from './components/Post/Post';
+import Footer from './components/Footer/Footer';
 
 function App() {
   return (
@@ -26,6 +27,7 @@ function App() {
               <Post></Post>
             </Route>
           </Switch>
+          <Footer></Footer>
         </div>
     </Router>
   );
