@@ -61,27 +61,35 @@ const Shop = () => {
                </div>
             </div>
            
-            {   
-              showLunch &&
-                lunchProduct.map(product => <LunchProducts 
-                                                key={product.key}
-                                                lunchProducts = {product}>
-                                            </LunchProducts>)
-            }
-            {
-              showBreakfast &&
-                breakfastProduct.map(product => <BreakfastProducts 
+           <div className="container">
+             <div className="row">
+              {   
+                showLunch &&
+                  lunchProduct.map(product => <LunchProducts 
                                                   key={product.key}
-                                                  breakfastProducts = {product}>
-                                              </BreakfastProducts>)
-            }
-            {
-              showDinner &&
-                dinnerProduct.map(product => <DinnerProducts
-                                                  key={product.key}
-                                                  dinnerProducts = {product}>
-                                              </DinnerProducts>)
-            }
+                                                  lunchProducts = {product}>
+                                              </LunchProducts>)
+              }
+             </div>
+             <div className="row">
+              {
+                showBreakfast &&
+                  breakfastProduct.map(product => <BreakfastProducts 
+                                                    key={product.key}
+                                                    breakfastProducts = {product}>
+                                                </BreakfastProducts>)
+              }
+             </div>
+             <div className="row">
+              {
+                showDinner &&
+                  dinnerProduct.map(product => <DinnerProducts
+                                                    key={product.key}
+                                                    dinnerProducts = {product}>
+                                                </DinnerProducts>)
+              }
+             </div>
+           </div>
           </div>
           {
             cart > 0 ? <Link to="/shipment"><button className="checkoutBtnActivate">Checkout Your Foods</button></Link> : <button onClick={() => alert("Your cart is empty yet. Keep Shopping")} className="checkoutBtn">Checkout Your Foods</button>

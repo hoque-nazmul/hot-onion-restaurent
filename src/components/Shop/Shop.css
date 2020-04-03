@@ -22,7 +22,7 @@
     margin: 5px 10px;
 }
 
-.ShopBtnActive:focus {
+.ShopBtnInactive:focus, .ShopBtnActive:focus{
     outline: none;
 }
 
