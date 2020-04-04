@@ -37,3 +37,7 @@
     border-radius: 10px;
     margin-left: 10px;
 }
+
+.BtnLogin:focus, .BtnSignUp:focus {
+    outline: none;
+}

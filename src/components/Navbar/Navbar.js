@@ -15,8 +15,8 @@ const Navbar = () => {
                 </div>
                 <div className="NavbarRight">
                     <span className="CartIcon"><FontAwesomeIcon icon={faShoppingCart} /></span>
-                    <button className="BtnLogin">Login</button>
-                    <button className="BtnSignUp">Sign up</button>
+                    <Link to="/login"><button className="BtnLogin">Login</button></Link>
+                    <Link to="/login"><button className="BtnSignUp">Sign up</button></Link>
                 </div>
             </div>
         </div>
