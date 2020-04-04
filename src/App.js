@@ -8,6 +8,9 @@ import SingleProduct from './components/SingleProduct/SingleProduct';
 import Shipment from './components/Shipment/Shipment';
 import Post from './components/Post/Post';
 import Footer from './components/Footer/Footer';
+import Login from './components/Login/Login';
+import NotFound from './components/NotFound/NotFound';
+
 
 function App() {
   return (
@@ -21,10 +24,16 @@ function App() {
             <Route path="/shipment">
                 <Shipment></Shipment>
             </Route>
-            <Route path="/">
+            <Route exact path="/">
               <Banner></Banner>
               <Shop></Shop>
               <Post></Post>
+            </Route>
+            <Route path="/login">
+              <Login></Login>
+            </Route>
+            <Route path="">
+              <NotFound></NotFound>
             </Route>
           </Switch>
           <Footer></Footer>
