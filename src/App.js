@@ -32,7 +32,7 @@ function App() {
             <Route path="/login">
               <Login></Login>
             </Route>
-            <Route path="">
+            <Route path="*">
               <NotFound></NotFound>
             </Route>
           </Switch>
