@@ -26,6 +26,10 @@
     margin-right: 20px;
 }
 
+.LoginContent .GoogleSignIn:focus {
+    outline: none;
+}
+
 .LoginContent input {
     display: block;
     width: 100%;
@@ -47,5 +51,15 @@
     background-color: #F91944;
     color: #f3f3f3;
     margin-top: 10px;
+    font-size: 18px;
+}
+
+.LoginContent input:focus {
+    outline: none;
+}
+
+.LoginContent .loginText {
+    color: #F91944;
+    cursor: pointer;
     font-size: 18px;
 }

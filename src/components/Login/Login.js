@@ -21,6 +21,7 @@ const Login = () => {
                                 <input type="password" placeholder="Confirm Password" name="confirmPassword" id="confirmPassword" required/>
                                 <input type="submit" value="Sign Up"/>
                             </form>
+                            <p className="loginText">Already have an Account</p>
                         </div>
                     </div>
                 </div>
