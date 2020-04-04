@@ -2,9 +2,25 @@ import React from 'react';
 import './Login.css'
 import logo from '../../images/logo.png'
 import googleIcon from '../../images/google.png'
+import signOut from '../../images/signout.png'
 import { useState } from 'react';
+import Auth from './useAuth';
 
 const Login = () => {
+    const auth = Auth();
+
+    const handleSignIn = () => {
+        auth.signInWithGoogle()
+        .then(res => {
+            window.location.pathname = '/';
+        })
+    }
+    const handleSignOut = () => {
+        auth.signOut()
+        .then(res => {
+            window.location.pathname = '/';
+        })
+    }
 
     // Handle Switch Form
     const [switchForm, setSwitchForm] = useState(false);
@@ -14,6 +30,7 @@ const Login = () => {
     const handleNewForm = () => {
         setSwitchForm(false);
     }
+
     // Temporary Submit Handler
     // TODO: filter the input & Develop it by firebase authentication system.
     const DemoSubmit = (event) => {
@@ -30,7 +47,9 @@ const Login = () => {
                         <div className="LoginContent">
                             <img src={logo} alt=""/>
 
-                            <button className="GoogleSignIn"><img src={googleIcon} alt=""/> Sign In With Google</button>
+                            {
+                                auth.user ? <button onClick={handleSignOut} className="GoogleSignIn"><img src={signOut} alt=""/> Sign Out</button> : <button onClick={handleSignIn} className="GoogleSignIn"><img src={googleIcon} alt=""/> Sign In With Google</button>
+                            }
 
                             <form style={{ display: switchForm===false ? 'block' : 'none' }} onSubmit={ DemoSubmit }>
                                 <input type="text" placeholder="Name" name="name" id="name" required/>

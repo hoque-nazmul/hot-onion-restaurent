@@ -6,6 +6,7 @@ import BreakfastProducts from '../BreakfastProducts/BreakfastProducts';
 import DinnerProducts from '../DinnerProducts/DinnerProducts';
 import { getDatabaseCart } from '../../utilities/databaseManager';
 import { Link } from 'react-router-dom';
+import { useAuth } from '../Login/useAuth';
 
 const Shop = () => {
     const [lunchProduct, setLunchProduct] = useState(fakeData);
@@ -46,6 +47,20 @@ const Shop = () => {
     const cartInfo = getDatabaseCart();
     const cartProductKeys = Object.keys(cartInfo);
     const productKeysCount = cartProductKeys.length;
+
+    // button
+    const auth = useAuth();
+    let checkOutBtn = ''; 
+    if(productKeysCount > 0 && auth.user) {
+      checkOutBtn = <Link to="/shipment"><button className="checkoutBtnActivate">Checkout Your Foods</button></Link>
+    }
+    else if (productKeysCount > 0) {
+      checkOutBtn = <Link to="/shipment"><button className="checkoutBtnActivate">Login to Checkout</button></Link>
+    }
+    else {
+      checkOutBtn = <button onClick={() => alert("Cart is empty yet. Keep Shopping")} className="checkoutBtn">Checkout Your Foods</button>
+    }
+
     
 
     return (
@@ -90,7 +105,7 @@ const Shop = () => {
            </div>
           </div>
           {
-            productKeysCount > 0 ? <Link to="/shipment"><button className="checkoutBtnActivate">Checkout Your Foods</button></Link> : <button onClick={() => alert("Your cart is empty yet. Keep Shopping")} className="checkoutBtn">Checkout Your Foods</button>
+            checkOutBtn
           }
           
         </div>
