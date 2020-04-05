@@ -3,17 +3,7 @@ import React from 'react';
 const Inventory = () => {
 
     const addAllFoodItems = () => {
-        console.log("Foods already added!");
-        // const fakedata = fakeData;
-        // fetch('http://localhost:4000/addAllFoods', {
-        //     method: 'POST',
-        //     body: JSON.stringify(fakedata),
-        //     headers: {
-        //       "Content-type": "application/json; charset=UTF-8"
-        //     }
-        //   })
-        //   .then(response => response.json())
-        //   .then(json => console.log(json))
+        alert("Foods already added!");
     }
     return (
         <div className="my-5 text-center">

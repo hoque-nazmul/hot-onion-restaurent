@@ -3,11 +3,14 @@ import "./Shipment.css"
 import { getDatabaseCart, removeFromDatabaseCart } from '../../utilities/databaseManager';
 import CartProducts from '../CartProducts/CartProducts';
 import { useForm } from 'react-hook-form'
+import { useAuth } from '../Login/useAuth';
 
 const Shipment = () => {
     const [cart, setCart] = useState([]);
     const [orderBtn, setOrderBtn] = useState(null);
     const [erorOrderBtn, setErrorOrderBtn] = useState(null);
+    const auth = useAuth();
+    const user = auth.user;
 
     useEffect(() => {
         const savedCart = getDatabaseCart();
@@ -67,9 +70,9 @@ const Shipment = () => {
                         <h2>Edit Delivery Details</h2>
 
                         <form onSubmit={handleSubmit(onSubmit)}>
-                            <input name="name" ref={register({ required: true })} placeholder="Your Name" />
+                            <input name="name" defaultValue={user.name} ref={register({ required: true })} placeholder="Your Name" />
                             {errors.name && <span className="inputError">Name is required</span>}
-                            <input name="email" ref={register({ required: true })} placeholder="Your Email" />
+                            <input name="email" defaultValue={user.email} ref={register({ required: true })} placeholder="Your Email" />
                             {errors.email && <span className="inputError">Eamil is required</span>}
                             <input name="address" ref={register({ required: true })} placeholder="Your Address" />
                             {errors.address && <span className="inputError">Address is required</span>}
@@ -80,14 +83,16 @@ const Shipment = () => {
                             <input name="zipcode" ref={register({ required: true })} placeholder="Zipcode Number" />
                             {errors.zipcode && <span className="inputError">Zipcode is required</span>}
 
-                            <input type="submit" />
+                            <input type="submit" value="Save & Continue" />
                         </form>
                     </div>
                     <div className="col-md-4">
                         <h6 style={{ fontSize: '18px', borderBottom: '1px solid #D2D2D2', paddingBottom: '10px', marginBottom: '20px' }}>Cart Food Items: {cart.length}</h6>
                         {
-                            cart.length > 0 ? cart.map(product => <CartProducts key={product.key} handleRemoveCart={handleRemoveCart} cartProduct={product}></CartProducts>) : <h2>Cart is Empty</h2>
-
+                            cart.length > 0 ? cart.map(product => <CartProducts key={product.key} handleRemoveCart={handleRemoveCart} cartProduct={product}></CartProducts>) : 
+                            <div id="preloder">
+                                <div className="loader"></div>
+                            </div>
                         }
                         <div className="CartSummary d-flex justify-content-between">
                             <div className="CartSummaryText">
