@@ -14,8 +14,6 @@ const Shop = () => {
   const [breakfastProduct, setbreakfastProduct] = useState([]);
   const [dinnerProduct, setDinnerProduct] = useState([]);
 
-
-
   const [showBreakfast, setShowBreakfast] = useState(false);
   const [showLunch, setShowLunch] = useState(true);
   const [showDinner, setShowDinner] = useState(false);
