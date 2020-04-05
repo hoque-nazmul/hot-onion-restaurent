@@ -1,19 +1,19 @@
 import React from 'react';
-import fakeData from '../../fakeData';
 
 const Inventory = () => {
 
     const addAllFoodItems = () => {
-        const fakedata = fakeData;
-        fetch('http://localhost:4000/addAllFoods', {
-            method: 'POST',
-            body: JSON.stringify(fakedata),
-            headers: {
-              "Content-type": "application/json; charset=UTF-8"
-            }
-          })
-          .then(response => response.json())
-          .then(json => console.log(json))
+        console.log("Foods already added!");
+        // const fakedata = fakeData;
+        // fetch('http://localhost:4000/addAllFoods', {
+        //     method: 'POST',
+        //     body: JSON.stringify(fakedata),
+        //     headers: {
+        //       "Content-type": "application/json; charset=UTF-8"
+        //     }
+        //   })
+        //   .then(response => response.json())
+        //   .then(json => console.log(json))
     }
     return (
         <div className="my-5 text-center">
