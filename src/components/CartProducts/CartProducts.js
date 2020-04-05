@@ -19,7 +19,7 @@ const CartProducts = (props) => {
                         <p>Quantity: {quantity}</p>
                     </div>
                 </div>
-                <div className="ProductQuantity d-flex align-items-center">
+                <div className="RemoveCartBtn d-flex align-items-center">
                     <button onClick={() => props.handleRemoveCart(key)}><FontAwesomeIcon style={{ color: '#F91944' }} icon={faTimes} /></button>
                 </div>
             </div>

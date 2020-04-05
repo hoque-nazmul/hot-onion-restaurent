@@ -40,7 +40,7 @@
     background: #F5F5F5;
     border: none;
     border-radius: 8px;
-    margin-bottom: 20px;
+    margin-top: 20px;
 }
 
 .googleImg {
@@ -53,7 +53,14 @@
     color: #f3f3f3;
     margin-top: 10px;
     font-size: 18px;
+    margin-top: 20px;
     margin-bottom: 10px;
+}
+
+.LoginContent .inputError {
+    color: red;
+    font-size: 16px;
+    display: flex;
 }
 
 .LoginContent input:focus {
