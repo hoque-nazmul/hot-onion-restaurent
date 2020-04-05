@@ -30,20 +30,19 @@
 
 .ProductQuantity {
     padding: 5px 0px;
-    border: 1px  solid #d0c0c0;
-    border-radius: 20px;
-    width: 90px;
-    height: 40px;
+    border: 1px solid #d0c0c0;
+    border-radius: 50%;
+    width: 45px;
+    height: 45px;
 }
 
 .ProductQuantity button {
-    padding: 0px 15px;
+    padding: 0px 14px;
     border: none;
     background: transparent;
     font-weight: bold;
-    font-size: 20px;
     margin-top: 0px;
-    color: #000;
+    font-size: 26px;
 }
 
 .ProductQuantity button:focus{

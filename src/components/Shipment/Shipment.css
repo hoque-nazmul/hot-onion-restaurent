@@ -16,24 +16,55 @@
     display: block;
     width: 420px;
     height: 35px;
-    margin-bottom: 15px;
+    margin-top: 15px;
     border-radius: 8px;
     border: 1px solid #F5F5F5;
     background: #F5F5F5;
     padding: 5px 15px;
 }
 
+.ShipmentSection .inputError {
+    color: red;
+    font-size: 15px;
+}
+
 .ShipmentSection input:focus {
     outline : none;
 }
 
-.ShipmentSection button {
+.ShipmentSection input[type='submit'] {
     color: white;
     border: 1px solid #F91944;
     background: #F91944;
     display: block;
     width: 420px;
-    height: 35px;
+    height: 38px;
+    margin-top: 20px;
+    border-radius: 8px;
+}
+
+.ShipmentSection .ActiveOrder {
+    color: white;
+    border: 1px solid #F91944;
+    background: #F91944;
+    display: block;
+    width: 420px;
+    height: 38px;
     margin-top: 10px;
     border-radius: 8px;
+}
+
+.ShipmentSection .InactiveOrder {
+    color: white;
+    border: 1px solid #CECECE;
+    background: #CECECE;
+    display: block;
+    width: 420px;
+    height: 38px;
+    margin-top: 10px;
+    border-radius: 8px;
+}
+
+.ActiveOrder:focus, .InactiveOrder:focus {
+    outline: none;
 }
