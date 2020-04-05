@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import "./Shipment.css"
-import { getDatabaseCart } from '../../utilities/databaseManager';
+import { getDatabaseCart, removeFromDatabaseCart } from '../../utilities/databaseManager';
 import fakeData from '../../fakeData';
 import CartProducts from '../CartProducts/CartProducts';
 import { useForm } from 'react-hook-form'
@@ -24,6 +24,16 @@ const Shipment = () => {
     const total = cart.reduce((total, product) => total + product.price * product.quantity, 0)
     const tax = total / 10;
 
+    // handle Remove Cart
+    const handleRemoveCart = (productKey) => {
+       const confirmRemove = window.confirm('Are You Sure!');
+       if(confirmRemove) {
+        const newCart = cart.filter(product => product.key !== productKey);
+        setCart(newCart);
+        removeFromDatabaseCart(productKey);
+       }
+    }
+
     // Shipment Form 
     const { register, handleSubmit, errors } = useForm()
     const onSubmit = data => { 
@@ -38,11 +48,6 @@ const Shipment = () => {
             setErrorOrderBtn(null);
         }, 3000);
     }
-
-    // const processOrders = (cart) => {
-    //     const cartProcessor = processOrder(cart);
-    //     setCart(cartProcessor);
-    // }
 
     return (
         <div className="container">
@@ -69,9 +74,9 @@ const Shipment = () => {
                         </form>
                     </div>
                     <div className="col-md-4">
-                        <h6 style={{ fontSize: '18px', borderBottom: '1px solid #D2D2D2', paddingBottom: '10px', marginBottom: '20px' }}>Cart Foods</h6>
+                        <h6 style={{ fontSize: '18px', borderBottom: '1px solid #D2D2D2', paddingBottom: '10px', marginBottom: '20px' }}>Cart Food Items: {cart.length}</h6>
                         {
-                            cart.length > 0 ? cart.map(product => <CartProducts key={product.key} cartProduct={product}></CartProducts>) : <h2>Cart is Empty</h2>
+                            cart.length > 0 ? cart.map(product => <CartProducts key={product.key} handleRemoveCart= {handleRemoveCart} cartProduct={product}></CartProducts>) : <h2>Cart is Empty</h2>
 
                         }
                         <div className="CartSummary d-flex justify-content-between">

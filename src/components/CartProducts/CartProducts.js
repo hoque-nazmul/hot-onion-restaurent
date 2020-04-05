@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faTimes } from '@fortawesome/free-solid-svg-icons'
 
 const CartProducts = (props) => {
-    const {name, quantity, img, price} = props.cartProduct;
+    const {key, name, quantity, img, price} = props.cartProduct;
 
     return (
         <div className="CartSection">
@@ -20,7 +20,7 @@ const CartProducts = (props) => {
                     </div>
                 </div>
                 <div className="ProductQuantity d-flex align-items-center">
-                    <button onClick=''><FontAwesomeIcon style={{ color: '#F91944' }} icon={faTimes} /></button>
+                    <button onClick={() => props.handleRemoveCart(key)}><FontAwesomeIcon style={{ color: '#F91944' }} icon={faTimes} /></button>
                 </div>
             </div>
         </div>
