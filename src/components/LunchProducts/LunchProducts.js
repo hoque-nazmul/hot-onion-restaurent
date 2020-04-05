@@ -3,13 +3,13 @@ import './LunchProducts.css'
 import { Link } from 'react-router-dom';
 
 const LunchProducts = (props) => {
-    const {key, name, price, short_dsc, img, category} = props.lunchProducts; 
+    const { key, name, price, short_dsc, img, category } = props.lunchProducts;
     return (
         <div className="col-md-4">
-            <Link to={"/product/"+key}>
+            <Link to={"/product/" + key}>
                 <div className="ProductContent">
                     <div className="ProductImg">
-                        <img src={img} alt=""/>
+                        <img src={img} alt="" />
                     </div>
                     <div className="ProductText">
                         <h4 className="title">{name}</h4>

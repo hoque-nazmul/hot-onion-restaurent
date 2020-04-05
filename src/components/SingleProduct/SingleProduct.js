@@ -41,7 +41,6 @@ const SingleProduct = () => {
             setQuantity(ProductQuantity);
         }
     }
-
     return (
         <div className="container">
             <div className="ProductSection">
@@ -51,31 +50,32 @@ const SingleProduct = () => {
                         <p>{product.description}</p>
                         {
                             product.quantity ?
-                            <div>
-                                <div className="ProductPrice d-flex align-items-center mt-3">
-                                    <h4>&#36; <span id="price">{quantity > 0 ? (product.price * quantity).toFixed(2) : product.price}</span></h4>
-                                    <div className="ProductQuantity d-flex">
-                                        <button onClick={handleMinusIcon}>-</button>
-                                        <span id="quantity">{quantity}</span>
-                                        <button onClick={handlePlusIcon}>+</button>
+                                <div>
+                                    <div className="ProductPrice d-flex align-items-center mt-3">
+                                        <h4>&#36; <span id="price">{quantity > 0 ? (product.price * quantity).toFixed(2) : product.price}</span></h4>
+                                        <div className="ProductQuantity d-flex">
+                                            <button onClick={handleMinusIcon}>-</button>
+                                            <span id="quantity">{quantity}</span>
+                                            <button onClick={handlePlusIcon}>+</button>
+                                        </div>
+                                    </div>
+                                    <div className="d-flex justify-content-start align-items-center">
+                                        <div className="BottomLeft">
+                                            {
+                                                btn ? <button onClick={() => hanldeCart(product)} className="CartBtn"><FontAwesomeIcon icon={faShoppingCart} /><span>Add</span></button> : <Link to="/"><button className="CartBtn"><span>Shop More</span><FontAwesomeIcon icon={faAngleDoubleRight} /></button></Link>
+                                            }
+                                        </div>
+                                        <div className="BottomRight pt-4 ml-4">
+                                            {
+                                                successMsg && <p style={{ color: 'green', fontWeight: 'bold', marginTop: '10px' }}>{successMsg}</p>
+                                            }
+                                        </div>
                                     </div>
                                 </div>
-                                <div className="d-flex justify-content-start align-items-center">
-                                    <div className="BottomLeft">
-                                        {
-                                            btn ? <button onClick={() => hanldeCart(product)} className="CartBtn"><FontAwesomeIcon icon={faShoppingCart} /><span>Add</span></button> : <Link to="/"><button className="CartBtn"><span>Shop More</span><FontAwesomeIcon icon={faAngleDoubleRight} /></button></Link>
-                                        }
-                                    </div>
-                                    <div className="BottomRight pt-4 ml-4">
-                                        {
-                                            successMsg && <p style={{ color: 'green', fontWeight: 'bold', marginTop: '10px' }}>{successMsg}</p>
-                                        }
-                                    </div>
+                                : <div id="preloder">
+                                    <div className="loader"></div>
                                 </div>
-                            </div>
-                            : <h2 style={{ marginTop: '130px', marginBottom: '200px', color: 'green' }}>Food Details Loading....</h2>
                         }
-
                     </div>
                     <div className="ProductImage">
                         <img src={product.img} alt="" />

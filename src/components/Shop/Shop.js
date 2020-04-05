@@ -71,9 +71,6 @@ const Shop = () => {
   else {
     checkOutBtn = <button onClick={() => alert("Cart is empty yet. Keep Shopping")} className="checkoutBtn">Checkout Your Foods</button>
   }
-
-
-
   return (
     <div className="ShopSection">
       <div className="ShopContent">
@@ -86,15 +83,21 @@ const Shop = () => {
         </div>
 
         <div className="container">
-          <div className="row">
-            {
-              showLunch && 
-              lunchProduct.map(product => <LunchProducts
-                key={product.key}
-                lunchProducts={product}>
-              </LunchProducts>)
-            }
-          </div>
+          {
+            lunchProduct.length > 0 ?
+              <div className="row">
+                {
+                  showLunch &&
+                  lunchProduct.map(product => <LunchProducts
+                    key={product.key}
+                    lunchProducts={product}>
+                  </LunchProducts>)
+                }
+              </div>
+              : <div id="preloder">
+                <div className="loader"></div>
+              </div>
+          }
           <div className="row">
             {
               showBreakfast &&
