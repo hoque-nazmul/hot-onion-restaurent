@@ -21,7 +21,7 @@ const Navbar = () => {
                         user && <span style={{ marginRight: '10px', color: '#F91944', fontWeight:'bold', cursor: 'pointer' }}>{user.name.split(' ').slice(0, -1).join(' ')}</span> 
                     }
                     {
-                        user ? <Link to="/login"><button className="BtnSignUp">Sign up</button></Link> : <Link to="/login"><button className="BtnSignUp">Login</button></Link>
+                        user ? <Link to="/login"><button className="BtnSignUp">Sign Out</button></Link> : <Link to="/login"><button className="BtnSignUp">Login</button></Link>
                     }
                 </div>
             </div>

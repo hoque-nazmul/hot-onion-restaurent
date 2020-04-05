@@ -11,6 +11,7 @@ import Footer from './components/Footer/Footer';
 import Login from './components/Login/Login';
 import NotFound from './components/NotFound/NotFound';
 import { AuthContextProvider, PrivateRoute } from './components/Login/useAuth';
+import Inventory from './components/Inventory/Inventory';
 
 
 function App() {
@@ -30,6 +31,9 @@ function App() {
                 <Banner></Banner>
                 <Shop></Shop>
                 <Post></Post>
+              </Route>
+              <Route path="/inventory">
+                <Inventory></Inventory>
               </Route>
               <Route path="/login">
                 <Login></Login>
