@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import "./Shipment.css"
 import { getDatabaseCart, removeFromDatabaseCart } from '../../utilities/databaseManager';
-import fakeData from '../../fakeData';
 import CartProducts from '../CartProducts/CartProducts';
 import { useForm } from 'react-hook-form'
 
@@ -13,12 +12,23 @@ const Shipment = () => {
     useEffect(() => {
         const savedCart = getDatabaseCart();
         const productkeys = Object.keys(savedCart)
-        const cartProduct = productkeys.map(key => {
-            const getProduct = fakeData.find(product => product.key === key)
-            getProduct.quantity = savedCart[key];
-            return getProduct;
+
+        fetch('http://localhost:4000/foodsByKeys', {
+            method: 'POST',
+            body: JSON.stringify(productkeys),
+            headers: {
+                "Content-type": "application/json; charset=UTF-8"
+            }
         })
-        setCart(cartProduct);
+            .then(response => response.json())
+            .then(product => {
+                const cartProduct = productkeys.map(key => {
+                    const getProduct = product.find(product => product.key === key)
+                    getProduct.quantity = savedCart[key];
+                    return getProduct;
+                })
+                setCart(cartProduct);
+            })
     }, [])
 
     const total = cart.reduce((total, product) => total + product.price * product.quantity, 0)
@@ -26,20 +36,20 @@ const Shipment = () => {
 
     // handle Remove Cart
     const handleRemoveCart = (productKey) => {
-       const confirmRemove = window.confirm('Are You Sure!');
-       if(confirmRemove) {
-        const newCart = cart.filter(product => product.key !== productKey);
-        setCart(newCart);
-        removeFromDatabaseCart(productKey);
-       }
+        const confirmRemove = window.confirm('Are You Sure!');
+        if (confirmRemove) {
+            const newCart = cart.filter(product => product.key !== productKey);
+            setCart(newCart);
+            removeFromDatabaseCart(productKey);
+        }
     }
 
     // Shipment Form 
     const { register, handleSubmit, errors } = useForm()
-    const onSubmit = data => { 
+    const onSubmit = data => {
         console.log(data)
         setOrderBtn(true);
-     }
+    }
 
     //  Handle Inactive Button
     const handleInactiveOrder = () => {
@@ -57,17 +67,17 @@ const Shipment = () => {
                         <h2>Edit Delivery Details</h2>
 
                         <form onSubmit={handleSubmit(onSubmit)}>
-                            <input name="name" ref={register({ required: true })} placeholder="Your Name"/>
+                            <input name="name" ref={register({ required: true })} placeholder="Your Name" />
                             {errors.name && <span className="inputError">Name is required</span>}
-                            <input name="email" ref={register({ required: true })} placeholder="Your Email"/>
+                            <input name="email" ref={register({ required: true })} placeholder="Your Email" />
                             {errors.email && <span className="inputError">Eamil is required</span>}
-                            <input name="address" ref={register({ required: true })} placeholder="Your Address"/>
+                            <input name="address" ref={register({ required: true })} placeholder="Your Address" />
                             {errors.address && <span className="inputError">Address is required</span>}
-                            <input name="city" ref={register({ required: true })} placeholder="Your City"/>
+                            <input name="city" ref={register({ required: true })} placeholder="Your City" />
                             {errors.city && <span className="inputError">City is required</span>}
-                            <input name="country" ref={register({ required: true })} placeholder="Your Country"/>
+                            <input name="country" ref={register({ required: true })} placeholder="Your Country" />
                             {errors.country && <span className="inputError">Country is required</span>}
-                            <input name="zipcode" ref={register({ required: true })} placeholder="Zipcode Number"/>
+                            <input name="zipcode" ref={register({ required: true })} placeholder="Zipcode Number" />
                             {errors.zipcode && <span className="inputError">Zipcode is required</span>}
 
                             <input type="submit" />
@@ -76,7 +86,7 @@ const Shipment = () => {
                     <div className="col-md-4">
                         <h6 style={{ fontSize: '18px', borderBottom: '1px solid #D2D2D2', paddingBottom: '10px', marginBottom: '20px' }}>Cart Food Items: {cart.length}</h6>
                         {
-                            cart.length > 0 ? cart.map(product => <CartProducts key={product.key} handleRemoveCart= {handleRemoveCart} cartProduct={product}></CartProducts>) : <h2>Cart is Empty</h2>
+                            cart.length > 0 ? cart.map(product => <CartProducts key={product.key} handleRemoveCart={handleRemoveCart} cartProduct={product}></CartProducts>) : <h2>Cart is Empty</h2>
 
                         }
                         <div className="CartSummary d-flex justify-content-between">
@@ -92,7 +102,7 @@ const Shipment = () => {
                             </div>
                         </div>
                         {
-                            orderBtn ?  <button className="ActiveOrder">Place Order</button> : <button onClick={handleInactiveOrder} className="InactiveOrder">Place Order</button>
+                            orderBtn ? <button className="ActiveOrder">Place Order</button> : <button onClick={handleInactiveOrder} className="InactiveOrder">Place Order</button>
                         }
                         {
                             erorOrderBtn && <p style={{ color: 'red', fontWeight: 'bold', fontSize: '15px' }}>{erorOrderBtn}</p>
