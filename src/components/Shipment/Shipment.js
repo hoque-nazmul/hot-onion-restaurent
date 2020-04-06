@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import "./Shipment.css"
-import { getDatabaseCart, removeFromDatabaseCart } from '../../utilities/databaseManager';
+import { getDatabaseCart, removeFromDatabaseCart, processOrder } from '../../utilities/databaseManager';
 import CartProducts from '../CartProducts/CartProducts';
 import { useForm } from 'react-hook-form'
 import { useAuth } from '../Login/useAuth';
@@ -15,6 +15,8 @@ const Shipment = () => {
     const [cart, setCart] = useState([]);
     const [orderBtn, setOrderBtn] = useState(null);
     const [erorOrderBtn, setErrorOrderBtn] = useState(null);
+    const [shippingInfo, setShippingInfo] = useState(null);
+    const [orderId, setOrderId] = useState(null);
     const stripePromise = loadStripe('pk_test_PehX3Q6sMAhiG3KyjciAzBNo00LgRIm1kE');
     const auth = useAuth();
     const user = auth.user;
@@ -57,8 +59,29 @@ const Shipment = () => {
     // Shipment Form 
     const { register, handleSubmit, errors } = useForm()
     const onSubmit = data => {
-        console.log(data)
+        setShippingInfo(data);
         setOrderBtn(true);
+    }
+
+    const handlePlaceOrder = (paymentInfo) => {
+        const email = user.email;
+        const shippingData = shippingInfo;
+        const cart = getDatabaseCart();
+        const payment = paymentInfo;
+        const orderDetails = { email, shippingData, cart, payment }
+
+        fetch('http://localhost:4000/placeOrder', {
+            method: 'POST',
+            body: JSON.stringify(orderDetails),
+            headers: {
+                "Content-type": "application/json; charset=UTF-8"
+            }
+        })
+            .then(response => response.json())
+            .then(data => {
+                setOrderId(data._id);
+                processOrder();
+            })
     }
 
     //  Handle Inactive Button
@@ -158,12 +181,20 @@ const Shipment = () => {
                         </div>
                     </div>
                     <div className="col-md-5">
-                        <div className="CheckOutForm">
-                            <h2>CheckOut Form</h2>
-                            <Elements stripe={stripePromise}>
-                                <CheckoutForm></CheckoutForm>
-                            </Elements>
-                        </div>
+                        {
+                            orderId ? <div className="successOrderMsg">
+                                <h2>Thanks for shopping with us.</h2>
+                                <p>Your Order ID: {orderId}</p>
+                            </div>
+                            :
+                            <div className="CheckOutForm">
+                                <h2>Payment Information</h2>
+                                <Elements stripe={stripePromise}>
+                                    <CheckoutForm handlePlaceOrder={ handlePlaceOrder }></CheckoutForm>
+                                </Elements>
+                            </div>
+                        }
+                        
                     </div>
                     <div className="col-md-3">
                         <div className="CheckOutRight">

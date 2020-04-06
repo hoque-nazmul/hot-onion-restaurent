@@ -5,9 +5,8 @@ import {
     useElements,
 } from '@stripe/react-stripe-js';
 
-const CheckoutForm = () => {
+const CheckoutForm = (props) => {
     const [paymentError, setPaymentError] = useState(null);
-    const [paymentData, setPaymentData] = useState(null);
 
     const stripe = useStripe();
     const elements = useElements();
@@ -27,9 +26,9 @@ const CheckoutForm = () => {
         console.log(error, paymentMethod);
         if(error) {
             setPaymentError(error);
-            setPaymentData(null);
         }else{
-            setPaymentData(paymentMethod);
+            const payment = {id: paymentMethod.id, brand: paymentMethod.card.brand, last4: paymentMethod.card.last4}
+            props.handlePlaceOrder(payment);
             setPaymentError(null);
         }
     };
@@ -43,9 +42,6 @@ const CheckoutForm = () => {
 
             {
                 paymentError && <p style={{ color: 'red', marginTop: '15px' }}>{paymentError}</p>
-            }
-            {
-                paymentData && <p style={{ color: 'green', marginTop: '15px' }}>Payment Successfull</p>
             }
         </form>
     );
