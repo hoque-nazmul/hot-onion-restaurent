@@ -23,7 +23,6 @@ const CheckoutForm = (props) => {
             type: 'card',
             card: elements.getElement(CardElement),
         });
-        console.log(error, paymentMethod);
         if(error) {
             setPaymentError(error);
         }else{
