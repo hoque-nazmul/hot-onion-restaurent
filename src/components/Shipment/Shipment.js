@@ -7,11 +7,15 @@ import { useAuth } from '../Login/useAuth';
 import deliveryImg from '../../images/Group 1151.png'
 import symbolicImg from '../../images/Group 1152.png'
 import map from '../../images/map.png'
+import CheckoutForm from '../CheckoutForm/CheckoutForm';
+import {loadStripe} from '@stripe/stripe-js';
+import { Elements } from '@stripe/react-stripe-js';
 
 const Shipment = () => {
     const [cart, setCart] = useState([]);
     const [orderBtn, setOrderBtn] = useState(null);
     const [erorOrderBtn, setErrorOrderBtn] = useState(null);
+    const stripePromise = loadStripe('pk_test_PehX3Q6sMAhiG3KyjciAzBNo00LgRIm1kE');
     const auth = useAuth();
     const user = auth.user;
 
@@ -99,10 +103,10 @@ const Shipment = () => {
                     <div className="col-md-4">
                         <h6 style={{ fontSize: '18px', borderBottom: '1px solid #D2D2D2', paddingBottom: '10px', marginBottom: '20px' }}>Cart Food Items: {cart.length}</h6>
                         {
-                            cart.length > 0 ? cart.map(product => <CartProducts key={product.key} handleRemoveCart={handleRemoveCart} cartProduct={product}></CartProducts>) : 
-                            <div id="preloder">
-                                <div className="loader"></div>
-                            </div>
+                            cart.length > 0 ? cart.map(product => <CartProducts key={product.key} handleRemoveCart={handleRemoveCart} cartProduct={product}></CartProducts>) :
+                                <div id="preloder">
+                                    <div className="loader"></div>
+                                </div>
                         }
                         <div className="CartSummary d-flex justify-content-between">
                             <div className="CartSummaryText">
@@ -128,7 +132,7 @@ const Shipment = () => {
                 <div className="row my-5 justify-content-between">
                     <div className="col-md-3">
                         <div className="CheckOutLeft">
-                            <img src={deliveryImg} alt=""/>
+                            <img src={deliveryImg} alt="" />
                             <div className="CheckoutAddress">
                                 <div className="UserAddress">
                                     <h4>Your Location</h4>
@@ -144,8 +148,8 @@ const Shipment = () => {
                                 <p>Approximate Delivery Time</p>
                             </div>
                             <div className="UserName d-flex align-items-center justify-content-start">
-                                <img src={symbolicImg} alt="" className="img-fluid"/>
-                                <div mt-3>
+                                <img src={symbolicImg} alt="" className="img-fluid" />
+                                <div className="mt-3">
                                     <h4>Nazmul Hoque</h4>
                                     <p>Your render</p>
                                 </div>
@@ -156,11 +160,14 @@ const Shipment = () => {
                     <div className="col-md-5">
                         <div className="CheckOutForm">
                             <h2>CheckOut Form</h2>
+                            <Elements stripe={stripePromise}>
+                                <CheckoutForm></CheckoutForm>
+                            </Elements>
                         </div>
                     </div>
                     <div className="col-md-3">
                         <div className="CheckOutRight">
-                            <img src={map} alt="" className="img-fluid ml-auto"/>
+                            <img src={map} alt="" className="img-fluid ml-auto" />
                         </div>
                     </div>
                 </div>

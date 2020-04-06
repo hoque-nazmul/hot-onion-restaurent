@@ -15,6 +15,7 @@ const CheckoutForm = () => {
       type: 'card',
       card: elements.getElement(CardElement),
     });
+    console.log("stripe integrated", error, paymentMethod);
   };
 
   return (
