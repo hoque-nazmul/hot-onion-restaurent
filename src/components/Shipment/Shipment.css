@@ -107,7 +107,7 @@
 }
 
 
-.CheckOutLeft button {
+.CheckOutLeft button, .successOrderMsg button {
     color: white;
     border: 1px solid #F91944;
     background: #F91944;
@@ -129,15 +129,16 @@
 }
 
 .successOrderMsg {
-    padding: 20px 20px;
+    padding: 60px 20px;
     background: #F5F5F5;
     text-align: center;
+    border-radius: 10px;
 }
 
 .successOrderMsg h2 {
     margin-bottom: 0px;
-    font-size: 22px;
-    font-weight: 500;
+    font-size: 32px;
+    font-weight: 400;
     color: green;
 }
 
@@ -145,3 +146,29 @@
     color: #C2C2C2;
     font-size: 15px;
 }
+
+.CheckOutForm {
+    background: #efeeec;
+    padding: 50px 20px;
+    border-radius: 10px;
+}
+
+.CheckOutForm h2 {
+    border-bottom: 1px solid #fff;
+    margin-bottom: 30px;
+}
+
+.CheckOutForm button {
+    margin-top: 27px;
+    background: #f91944;
+    border: #f91944;
+    border-radius: 10px;
+    color: #fff;
+    padding: 6px 50px;
+}
+
+.ElementsApp input, .CardField-child{
+    background-color: #fff;
+}
+
+ 
