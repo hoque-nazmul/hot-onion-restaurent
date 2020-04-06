@@ -27,7 +27,7 @@ const Shipment = () => {
         const savedCart = getDatabaseCart();
         const productkeys = Object.keys(savedCart)
 
-        fetch('http://localhost:4000/foodsByKeys', {
+        fetch('https://fathomless-ridge-69474.herokuapp.com/foodsByKeys', {
             method: 'POST',
             body: JSON.stringify(productkeys),
             headers: {
@@ -73,7 +73,7 @@ const Shipment = () => {
         const payment = paymentInfo;
         const orderDetails = { email, shippingData, cart, payment }
 
-        fetch('http://localhost:4000/placeOrder', {
+        fetch('https://fathomless-ridge-69474.herokuapp.com/placeOrder', {
             method: 'POST',
             body: JSON.stringify(orderDetails),
             headers: {

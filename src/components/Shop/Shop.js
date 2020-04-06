@@ -19,7 +19,7 @@ const Shop = () => {
   const [showDinner, setShowDinner] = useState(false);
   useEffect(() => {
     // Get All Foods & Lunch Foods for HomePage
-    fetch('http://localhost:4000/foods')
+    fetch('https://fathomless-ridge-69474.herokuapp.com/foods')
       .then(res => res.json())
       .then(data => {
         const lunchFoods = data.filter(food => food.category === 'lunch');
