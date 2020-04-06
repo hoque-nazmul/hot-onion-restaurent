@@ -4,6 +4,9 @@ import { getDatabaseCart, removeFromDatabaseCart } from '../../utilities/databas
 import CartProducts from '../CartProducts/CartProducts';
 import { useForm } from 'react-hook-form'
 import { useAuth } from '../Login/useAuth';
+import deliveryImg from '../../images/Group 1151.png'
+import symbolicImg from '../../images/Group 1152.png'
+import map from '../../images/map.png'
 
 const Shipment = () => {
     const [cart, setCart] = useState([]);
@@ -62,6 +65,13 @@ const Shipment = () => {
         }, 3000);
     }
 
+    // Today function
+    function getTomorrow() {
+        const tomorrow = new Date();
+        tomorrow.setDate(tomorrow.getDate() + 1); // even 32 is acceptable
+        return `${tomorrow.getFullYear()}/${tomorrow.getMonth() + 1}/${tomorrow.getDate()}`;
+    }
+
     return (
         <div className="container">
             <div className="ShipmentSection">
@@ -112,6 +122,46 @@ const Shipment = () => {
                         {
                             erorOrderBtn && <p style={{ color: 'red', fontWeight: 'bold', fontSize: '15px' }}>{erorOrderBtn}</p>
                         }
+                    </div>
+                </div>
+
+                <div className="row my-5 justify-content-between">
+                    <div className="col-md-3">
+                        <div className="CheckOutLeft">
+                            <img src={deliveryImg} alt=""/>
+                            <div className="CheckoutAddress">
+                                <div className="UserAddress">
+                                    <h4>Your Location</h4>
+                                    <p>Chittagong, Bangladesh</p>
+                                </div>
+                                <div className="ShopAddress">
+                                    <h4>Shop Address</h4>
+                                    <p>Agrabad, Chittagong</p>
+                                </div>
+                            </div>
+                            <div className="DeliveryTime my-4 mx-3">
+                                <h2>{getTomorrow()} <span>5:00pm</span></h2>
+                                <p>Approximate Delivery Time</p>
+                            </div>
+                            <div className="UserName d-flex align-items-center justify-content-start">
+                                <img src={symbolicImg} alt="" className="img-fluid"/>
+                                <div mt-3>
+                                    <h4>Nazmul Hoque</h4>
+                                    <p>Your render</p>
+                                </div>
+                            </div>
+                            <button className="mt-3">Contact</button>
+                        </div>
+                    </div>
+                    <div className="col-md-5">
+                        <div className="CheckOutForm">
+                            <h2>CheckOut Form</h2>
+                        </div>
+                    </div>
+                    <div className="col-md-3">
+                        <div className="CheckOutRight">
+                            <img src={map} alt="" className="img-fluid ml-auto"/>
+                        </div>
                     </div>
                 </div>
             </div>
