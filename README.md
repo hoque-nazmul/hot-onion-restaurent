@@ -1,4 +1,3 @@
-```
 # HOT ONION RESTAURANT
 
 hot onion restaurant is an ecommerce system which Client Side managed with React.js & bootstrap.
