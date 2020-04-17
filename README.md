@@ -36,3 +36,5 @@ The web application backend is built on express.js. Data is stored in a MongoDB 
 ### Useful Links
  - Demo: https://hot-restaurant-app.web.app/
  - Server: https://github.com/nazmul98/hot-onion-restaurant-server
+
+ <img src="src/images/home.png">
