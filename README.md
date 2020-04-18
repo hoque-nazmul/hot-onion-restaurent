@@ -5,6 +5,7 @@ hot onion restaurant is an ecommerce system which Client Side managed with React
 ## What's included
  - Showed different different type of foods item in home page by selecting.
  - Food Ordering System are dynamically managed.
+ - Displayed Cart Added Products Length at Cart icon in Navbar.
  - Authentication System (Google & Email) is managed with firebase
  - Tried to dynamically manage event handling keeping UX in mind. 
  - Integrated Stripe Payment Gateway.
