@@ -19,7 +19,9 @@ In order to install SCIPIO ERP, the following prerequisites must be installed:
 
 ### Download
 1. Open your command line and run:
-  - git clone https://github.com/nazmul98/hot-onion-restaurent.git
+```js
+$ git clone https://github.com/nazmul98/hot-onion-restaurent.git
+```
 
 ### Installation Process
 In order to install, the following steps must be taken:
