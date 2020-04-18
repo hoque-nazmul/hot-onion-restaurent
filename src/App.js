@@ -12,17 +12,19 @@ import Login from './components/Login/Login';
 import NotFound from './components/NotFound/NotFound';
 import { AuthContextProvider, PrivateRoute } from './components/Login/useAuth';
 import Inventory from './components/Inventory/Inventory';
+import { useState } from 'react';
 
 
 function App() {
+  const [cartAmount, setCartAmount] = useState(0);
   return (
     <Router>
        <div className="App">
          <AuthContextProvider>
-            <Navbar></Navbar>
+            <Navbar cartAmount={cartAmount}></Navbar>
             <Switch>
               <Route path="/product/:productKey">
-                <SingleProduct></SingleProduct>
+                <SingleProduct setCartAmount= {setCartAmount}></SingleProduct>
               </Route>
               <PrivateRoute path="/shipment">
                   <Shipment></Shipment>

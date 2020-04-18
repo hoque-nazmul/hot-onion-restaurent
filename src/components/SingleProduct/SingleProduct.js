@@ -3,9 +3,10 @@ import { useParams, Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faShoppingCart, faAngleDoubleRight } from '@fortawesome/free-solid-svg-icons'
 import './SingleProduct.css'
-import { addToDatabaseCart } from '../../utilities/databaseManager';
+import { addToDatabaseCart, getDatabaseCart } from '../../utilities/databaseManager';
 
-const SingleProduct = () => {
+const SingleProduct = (props) => {
+    const {setCartAmount} = props;
     const { productKey } = useParams();
     const [product, setProduct] = useState([]);
 
@@ -23,6 +24,11 @@ const SingleProduct = () => {
 
     const hanldeCart = (cartProduct) => {
         addToDatabaseCart(cartProduct.key, quantity);
+        // Set the Cart Amount in Navbar
+        const cart = getDatabaseCart();
+        const cartAmount = Object.keys(cart).length;
+        setCartAmount(cartAmount);
+        
         setBtn(false)
         setSuceessMsg("Product Successfully added to Your Cart");
         setTimeout(() => {
