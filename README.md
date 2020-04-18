@@ -25,8 +25,10 @@ In order to install SCIPIO ERP, the following prerequisites must be installed:
 In order to install, the following steps must be taken:
 
 1. Open your command line, go to the extracted folder and run:
-  - npm install
-  - npm start
+```js
+$  npm install
+$  npm start
+```
 
                 **Congratulations, you have installed Hot Onion Restaurant App!**
 
