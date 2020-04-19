@@ -1,12 +1,13 @@
 # HOT ONION RESTAURANT
 
-hot onion restaurant is an ecommerce system which Client Side managed with React.js & bootstrap.
+Hot Onion Restaurant is an ecommerce system which Client Side managed with React.js & bootstrap and Backend Side managed with Express.js & MongoDB.
 
 ## What's included
  - Showed different different type of foods item in home page by selecting.
  - Food Ordering System are dynamically managed.
  - Displayed Cart Added Products Length at Cart icon in Navbar.
- - Authentication System (Google & Email) is managed with firebase
+ - Authentication System (Google & Email) is managed with firebase.
+ - Used Private Router for Shipment Component.
  - Tried to dynamically manage event handling keeping UX in mind. 
  - Integrated Stripe Payment Gateway.
  - Backend API managed express.js
@@ -33,7 +34,7 @@ $  npm install
 $  npm start
 ```
 
-                    **Congratulations, you have installed Hot Onion Restaurant App!**
+                **Congratulations, you have installed Hot Onion Restaurant App!**
 
 ### How I built it
 The web application backend is built on express.js. Data is stored in a MongoDB database. The application will be hosted on firebase. React.js, JS ES6 features, Bootstrap4, HTML5 and CSS3 is used in the front-end.
