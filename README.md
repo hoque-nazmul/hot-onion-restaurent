@@ -14,7 +14,7 @@ hot onion restaurant is an ecommerce system which Client Side managed with React
 
 ## Installation
 ### Prerequisites
-In order to install SCIPIO ERP, the following prerequisites must be installed:
+In order to install HOT ONION RESTAURANT APP, the following prerequisites must be installed:
  - NPM 
  - Git
 
