@@ -34,7 +34,7 @@ $  npm install
 $  npm start
 ```
 
-                **Congratulations, you have installed Hot Onion Restaurant App!!**
+                **Congratulations, you have installed Hot Onion Restaurant App!**
 
 ### How I built it
 The web application backend is built on express.js. Data is stored in a MongoDB database. The application will be hosted on firebase. React.js, JS ES6 features, Bootstrap4, HTML5 and CSS3 is used in the front-end.
