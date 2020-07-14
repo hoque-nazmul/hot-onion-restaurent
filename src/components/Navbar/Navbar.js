@@ -27,7 +27,6 @@ const Navbar = (props) => {
     else {
         cart = <span onClick={() => alert("Cart is empty yet. Keep Shopping")}  className="CartIcon"><FontAwesomeIcon icon={faShoppingCart} /> (<span className="cartLength">{cartAmount}</span>)</span>
         
-        // <button onClick={() => alert("Cart is empty yet. Keep Shopping")} className="checkoutBtn">Checkout Your Foods</button>
     }
     return (
         <div className="NavbarWrapper">
@@ -39,14 +38,13 @@ const Navbar = (props) => {
                     {
                         cart
                     }
-                    {/* <Link to="/shipment"> */}
-                    {/* <span className="CartIcon"><FontAwesomeIcon icon={faShoppingCart} /> (<span style={{ color: '#F91944', fontWeight: 'bold', padding: '2px' }}>{cartAmount}</span>)</span> */}
-                    {/* </Link> */}
+
                     {
-                        user && <span style={{ marginRight: '10px', color: '#F91944', fontWeight: 'bold', cursor: 'pointer' }}>{user.name.split(' ').slice(0, -1).join(' ')}</span>
+                        user && <span style={{ marginRight: '10px', color: '#F91944', fontWeight: 'bold', cursor: 'pointer' }}>{user.name && user.name.split(' ').slice(0, -1).join(' ')}</span>
                     }
+                    
                     {
-                        user ? <Link to="/login"><button className="BtnSignUp">Sign Out</button></Link> : <Link to="/login"><button className="BtnSignUp">Login</button></Link>
+                        user ? <Link to="/login"><button className="BtnSignUp">Sign Out</button></Link> : <Link to="/login"><button className="BtnSignUp">Sign Up</button></Link>
                     }
                 </div>
             </div>

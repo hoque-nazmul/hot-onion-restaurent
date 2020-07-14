@@ -8,6 +8,9 @@ import Auth from './useAuth';
 import { useForm } from 'react-hook-form';
 
 const Login = () => {
+    const [returningUser, setReturningUser] = useState(false);
+    const [signInData, setSignInData] = useState({ email: "", password: "" });
+
     const auth = Auth();
 
     const handleSignIn = () => {
@@ -23,28 +26,40 @@ const Login = () => {
             })
     }
 
-    // Handle Switch Form
-    const [switchForm, setSwitchForm] = useState(false);
-    const handleSwitchForm = () => {
-        setSwitchForm(true);
-    }
-    const handleNewForm = () => {
-        setSwitchForm(false);
-    }
-
     // Temporary Submit Handler
     // TODO: filter the input & Develop it by firebase authentication system.
 
     // Demo Sign up & Sign in Form Handler 
-    const { register, handleSubmit, errors } = useForm()
-    const onSignUpWithEamil = data => { 
-        console.log(data.password)
-        alert("Sorry, It hasn't Developed yet. Please, Sign in with Google");
-     }
-     const onSignInWithEamil = datas => { 
-        console.log(datas)
-        alert("Sorry, It hasn't Developed yet. Please, Sign in with Google");
-     }
+    const { register, handleSubmit, errors, watch } = useForm()
+    const onSubmit = data => {
+        if (data.name && data.email && data.password && data.confirmPassword) {
+            console.log(data);
+            auth.signUp(data.email, data.confirmPassword, data.name)
+        }
+    }
+
+    // sign in
+    const handleBlur = (e) => {
+        const newUser = {
+            ...signInData
+        }
+        let inputName = e.target.name;
+        let inputValue = e.target.value;
+
+        newUser[inputName] = inputValue;
+        setSignInData(newUser)
+    }
+
+    const singInHandler = (event) => {
+        event.preventDefault();
+
+        if (signInData.email && signInData.password) {
+            auth.signIn(signInData.email, signInData.password)
+        }
+        event.target.reset();
+
+        setSignInData({ email: "", password: "" })
+    }
 
     return (
         <div className="LoginWrapper">
@@ -59,36 +74,48 @@ const Login = () => {
                             }
 
                             {/* Using React Hook Form */}
-                            <form style={{ display: switchForm === false ? 'none' : 'block' }} onSubmit={handleSubmit(onSignUpWithEamil)}>
-                                <input name="name" ref={register({ required: true })} placeholder="Name" />
-                                {errors.name && <span className="inputError">Name is required</span>}
-
-                                <input name="email" ref={register({ required: true })} placeholder="Email" />
-                                {errors.email && <span className="inputError">Eamil is required</span>}
-
-                                <input type="password" name="password" ref={register({ required: true })} placeholder="Password" />
-                                {errors.password && <span className="inputError">Password is required</span>}
-
-                                <input type="password" name="confirmPassword" ref={register({ required: true })} placeholder="Confirm Password" />
-                                {errors.confirmPassword && <span className="inputError">Confirm Password is required</span>}
-                                
-                                <input type="submit" value="Sign up" />
-                            </form>
-                            
-                            {/* Without Using React Hook Form */}
-                            <form style={{ display: switchForm ? 'none' : 'block' }} onSubmit={onSignInWithEamil}>
-                                <input name="loginEmail" placeholder="Email" />
-                                {errors.loginEmail && <span className="inputError">Eamil is required</span>}
-
-                                <input type="password" name="loginPassword" placeholder="Password" />
-                                {errors.loginPassword && <span className="inputError">Password is required</span>}
-                                
-                                <input type="submit" value="Sign in"/>
-                            </form>
-
                             {
-                                switchForm ? <p onClick={handleNewForm} className="loginText">Already have an Account</p> : <p onClick={handleSwitchForm} className="loginText">Create a new Account</p>
+                                returningUser ?
+                                    <div>
+                                        {
+                                            auth.user != null && <p className="text-danger">* {auth.user.error}</p>
+                                        }
+                                        <form onSubmit={singInHandler}>
+                                            <input type="email" name="email" onBlur={handleBlur} placeholder="Email" />
+                                            <input type="password" name="password" onBlur={handleBlur} placeholder="Password" />
+
+                                            <input type="submit" value="Sign In" />
+                                        </form>
+                                        <p onClick={() => setReturningUser(false)} className="loginText">Create a new Account</p>
+                                    </div>
+                                    :
+                                    <div>
+                                        {
+                                            auth.user != null && <p className="text-danger">* {auth.user.error}</p>
+                                        }
+                                        <form onSubmit={handleSubmit(onSubmit)}>
+                                            <input name="name" ref={register({ required: true })} placeholder="Name" />
+                                            {errors.name && <span className="inputError">Name is required</span>}
+
+                                            <input name="email" ref={register({
+                                                required: true,
+                                                validate: () => /^.+@.+\..+$/.test(watch('email'))
+                                            })} placeholder="Email" />
+                                            {errors.email && <span className="inputError">Eamil is required</span>}
+
+                                            <input type="password" name="password" ref={register({ required: true, minLength: 6 })} placeholder="Password" />
+                                            {errors.password && <span className="inputError">Password must be six or greater than six character</span>}
+
+                                            <input type="password" name="confirmPassword" ref={register({ validate: (value) => value === watch('password') })} placeholder="Confirm Password" />
+                                            {errors.confirmPassword && <span className="inputError">Password Doesn't match</span>}
+
+                                            <input type="submit" value="Sign up" />
+                                        </form>
+                                        <p onClick={() => setReturningUser(true)} className="loginText">Already have an Account</p>
+                                    </div>
+
                             }
+
                         </div>
                     </div>
                 </div>
