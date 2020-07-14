@@ -17,6 +17,7 @@
 
 .CartIcon {
     margin-right: 30px;
+    cursor: pointer;
 }
 
 .BtnLogin {
@@ -40,4 +41,20 @@
 
 .BtnLogin:focus, .BtnSignUp:focus {
     outline: none;
+}
+
+.cartLength {
+    color: black;
+    font-weight: bold;
+    padding: 2px
+}
+
+.NavbarRight a:hover {
+    text-decoration: none;
+}
+
+.CartIconActive {
+    color: #F91944;
+    margin-right: 30px;
+    cursor: pointer;
 }

@@ -38,7 +38,7 @@ const Login = () => {
     // Demo Sign up & Sign in Form Handler 
     const { register, handleSubmit, errors } = useForm()
     const onSignUpWithEamil = data => { 
-        console.log(data)
+        console.log(data.password)
         alert("Sorry, It hasn't Developed yet. Please, Sign in with Google");
      }
      const onSignInWithEamil = datas => { 
@@ -57,8 +57,9 @@ const Login = () => {
                             {
                                 auth.user ? <button onClick={handleSignOut} className="GoogleSignIn"><img src={signOut} alt="" /> Sign Out</button> : <button onClick={handleSignIn} className="GoogleSignIn"><img src={googleIcon} alt="" /> Sign In With Google</button>
                             }
+
                             {/* Using React Hook Form */}
-                            <form style={{ display: switchForm === false ? 'block' : 'none' }} onSubmit={handleSubmit(onSignUpWithEamil)}>
+                            <form style={{ display: switchForm === false ? 'none' : 'block' }} onSubmit={handleSubmit(onSignUpWithEamil)}>
                                 <input name="name" ref={register({ required: true })} placeholder="Name" />
                                 {errors.name && <span className="inputError">Name is required</span>}
 
@@ -75,7 +76,7 @@ const Login = () => {
                             </form>
                             
                             {/* Without Using React Hook Form */}
-                            <form style={{ display: switchForm ? 'block' : 'none' }} onSubmit={onSignInWithEamil}>
+                            <form style={{ display: switchForm ? 'none' : 'block' }} onSubmit={onSignInWithEamil}>
                                 <input name="loginEmail" placeholder="Email" />
                                 {errors.loginEmail && <span className="inputError">Eamil is required</span>}
 
@@ -86,7 +87,7 @@ const Login = () => {
                             </form>
 
                             {
-                                switchForm ? <p onClick={handleNewForm} className="loginText">Create a new Account</p> : <p onClick={handleSwitchForm} className="loginText">Already have an Account</p>
+                                switchForm ? <p onClick={handleNewForm} className="loginText">Already have an Account</p> : <p onClick={handleSwitchForm} className="loginText">Create a new Account</p>
                             }
                         </div>
                     </div>
