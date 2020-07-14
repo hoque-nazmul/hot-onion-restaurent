@@ -19,7 +19,7 @@ const Shipment = () => {
     const [shippingInfo, setShippingInfo] = useState(null);
     const [orderId, setOrderId] = useState(null);
     const [showPayment, setShowPayment] = useState(null);
-    const stripePromise = loadStripe('pk_test_PehX3Q6sMAhiG3KyjciAzBNo00LgRIm1kE');
+    const stripePromise = loadStripe('pk_test_51H4psTCHY76gUC694bjWT15XdnyMbADLaqHyEKZuCmcIq3F1tQporpqjMZOroNlrmHDLIMU4h1jvq24a5K8c4ZXC00OzdtWPa9');
     const auth = useAuth();
     const user = auth.user;
 
