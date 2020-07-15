@@ -44,7 +44,7 @@ const Navbar = (props) => {
                     }
                     
                     {
-                        user ? <Link to="/login"><button className="BtnSignUp">Sign Out</button></Link> : <Link to="/login"><button className="BtnSignUp">Sign Up</button></Link>
+                        user ? <button onClick={() => {auth.signOut()}}className="BtnSignUp">Sign Out</button> : <Link to="/login"><button className="BtnSignUp">Sign Up</button></Link>
                     }
                 </div>
             </div>

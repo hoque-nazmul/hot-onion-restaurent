@@ -41,6 +41,7 @@ const getUser = (user) => {
 }
 const Auth = () => {
   const [user, setUser] = useState(null);
+  
   // Sign in with Google
   const signInWithGoogle = () => {
     const provider = new firebase.auth.GoogleAuthProvider();
@@ -70,17 +71,7 @@ const Auth = () => {
   // Sign Up with Email Password
   const signUp = (email, password, name) => {
     return firebase.auth().createUserWithEmailAndPassword(email, password)
-      // .then(res => {
-      //   firebase.auth().currentUser.updateProfile({
-      //     displayName: name
-      //   }).then(() => {
-      //     const newUser = getUser(res.user);
-      //     setUser(newUser);
-      //     return res.user;
-      //   });
-      // })
-      // .catch(err => setUser({ error: err.message }))
-
+      
       .then(res => {
         firebase.auth().currentUser.updateProfile({
           displayName: name
@@ -90,6 +81,7 @@ const Auth = () => {
         });
       })
       .catch(err => setUser({ error: err.message }))
+
   }
 
   // For Sign Out Feature
