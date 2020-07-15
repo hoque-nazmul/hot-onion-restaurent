@@ -49,7 +49,7 @@ const Auth = () => {
       .then((res) => {
         const newUser = getUser(res.user);
         setUser(newUser);
-        return res.user;
+        window.history.back();
       })
       .catch((err) => {
         setUser(null);

@@ -15,9 +15,6 @@ const Login = () => {
 
     const handleSignIn = () => {
         auth.signInWithGoogle()
-            .then(res => {
-                window.location.pathname = '/';
-            })
     }
     const handleSignOut = () => {
         auth.signOut()
