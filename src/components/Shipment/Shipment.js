@@ -59,7 +59,7 @@ const Shipment = () => {
     }
 
     // Shipment Form 
-    const { register, handleSubmit, errors } = useForm()
+    const { register, handleSubmit, errors, watch } = useForm()
     const onSubmit = data => {
         setShippingInfo(data);
         setOrderBtn(true);
@@ -124,8 +124,8 @@ const Shipment = () => {
                             <form onSubmit={handleSubmit(onSubmit)}>
                                 <input name="name" defaultValue={user.name} ref={register({ required: true })} placeholder="Your Name" />
                                 {errors.name && <span className="inputError">Name is required</span>}
-                                <input name="email" defaultValue={user.email} ref={register({ required: true })} placeholder="Your Email" />
-                                {errors.email && <span className="inputError">Eamil is required</span>}
+                                <input name="email" defaultValue={user.email} ref={register({ required: true, validate: () => /^.+@.+\..+$/.test(watch('email')) })} placeholder="Your Email" />
+                                {errors.email && <span className="inputError">Please, Provide a valid Email</span>}
                                 <input name="address" ref={register({ required: true })} placeholder="Your Address" />
                                 {errors.address && <span className="inputError">Address is required</span>}
                                 <input name="city" ref={register({ required: true })} placeholder="Your City" />

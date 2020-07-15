@@ -33,7 +33,6 @@ const Login = () => {
     const { register, handleSubmit, errors, watch } = useForm()
     const onSubmit = data => {
         if (data.name && data.email && data.password && data.confirmPassword) {
-            console.log(data);
             auth.signUp(data.email, data.confirmPassword, data.name)
         }
     }
@@ -101,7 +100,7 @@ const Login = () => {
                                                 required: true,
                                                 validate: () => /^.+@.+\..+$/.test(watch('email'))
                                             })} placeholder="Email" />
-                                            {errors.email && <span className="inputError">Eamil is required</span>}
+                                            {errors.email && <span className="inputError">Please, Provide a valid Email</span>}
 
                                             <input type="password" name="password" ref={register({ required: true, minLength: 6 })} placeholder="Password" />
                                             {errors.password && <span className="inputError">Password must be six or greater than six character</span>}

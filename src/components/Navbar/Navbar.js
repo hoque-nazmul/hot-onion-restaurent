@@ -40,7 +40,7 @@ const Navbar = (props) => {
                     }
 
                     {
-                        user && <span style={{ marginRight: '10px', color: '#F91944', fontWeight: 'bold', cursor: 'pointer' }}>{user.name && user.name.split(' ').slice(0, -1).join(' ')}</span>
+                        user && <span style={{ marginRight: '10px', color: '#F91944', fontWeight: 'bold', cursor: 'pointer' }}>{user.name && user.name.split(' ')[0]}</span>
                     }
                     
                     {
